@@ -5,7 +5,7 @@ import { UserService } from './service/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'ang-basic-practice004-pipe';
@@ -18,11 +18,9 @@ export class AppComponent {
    * @var phrase {string} - a keresőkifejezés
    */
 
+  phrase: string = '';
 
-
-  constructor(
-    private userService: UserService,
-  ) {}
+  constructor(private userService: UserService) {}
 
   onDeleteUser(user: User): void {
     this.userService.removeUser(user);
@@ -38,6 +36,7 @@ export class AppComponent {
    * @returns {void}
    */
 
-
-
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
 }

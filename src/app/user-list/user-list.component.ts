@@ -4,16 +4,16 @@ import { User } from '../model/user';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-
   /**
    * FELADAT!
    * Hozd létre az alábbi Input tulajdonságot.
    * @var phraseString {string} - Input tulajdonság
    */
 
+  @Input() phraseString: string = '';
 
   @Input() users: User[] = [];
   @Output() delUser: EventEmitter<User> = new EventEmitter();
@@ -25,10 +25,11 @@ export class UserListComponent implements OnInit {
    * @var columnKey {string} - a rendezés oszlopának kulcsa
    */
 
-  constructor() { }
+  columnKey: string = '';
 
-  ngOnInit(): void {
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   onSelectUser(user: User): void {
     this.currentUser = user;
@@ -50,4 +51,7 @@ export class UserListComponent implements OnInit {
    * @returns {void}
    */
 
+  onColumnSelect(key: string): void {
+    this.columnKey = key;
+  }
 }
